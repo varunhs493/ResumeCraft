@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import {DUMMY_RESUME_DATA, resumeTemplates} from '../utils/data'
-import Tabs from './tabs';
+import Tabs from './Tabs';
 import { Check } from 'lucide-react';
 import { TemplateCard } from './Cards';
 import RenderResume from './RenderResume';
