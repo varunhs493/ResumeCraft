@@ -46,7 +46,7 @@ const LandingPage = () => {
           </button>
 
           {/*desktop navigation*/}
-          <div className='hidden md:flex items-center'>
+          <div className="hidden md:flex items-center">
                 {user?(
                   <ProfileInfoCards />
                 ):(

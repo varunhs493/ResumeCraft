@@ -117,7 +117,7 @@ const Dashboard = () => {
   }
   useEffect(()=>{
     fetchAllResumes();
-  },[])
+  },[]);
 
 const handleDeleteResume=async()=>{
   if(!resumeToDelete) return;
@@ -151,7 +151,7 @@ const handleDeleteClick=(id)=>{
             <div>
               <h1 className={styles.headerTitle}>My Resume</h1>
               <p className={styles.headerSubtitle}>
-                {allResumes.length>0 ? `You have ${allResumes.length} resumes ${allResumes.length!=1 ? 's':''}`:'Start crafting your professional resume'}
+                {allResumes.length>0 ? `You have ${allResumes.length} resumes `:'Start crafting your professional resume'}
               </p>
             </div>
             <div className='flex gap-4'>
@@ -177,7 +177,7 @@ const handleDeleteClick=(id)=>{
           {!loading && allResumes.length===0 &&(
             <div className={styles.emptyStateWrapper}>
               <div className={styles.emptyIconWrapper}>
-                <LucideFilePlus size={32} className='text-violet-600'/>
+                <LucideFilePlus size={32} className='text-yellow-600'/>
               </div>
               <h3 className={styles.emptyTitle}>
                 No resume yet
@@ -235,10 +235,10 @@ const handleDeleteClick=(id)=>{
 
         {/*delete modal*/}
         <Modal isOpen={showDeleteConfirm} onClose={()=>setShowDeleteConfirm(false)} title='Confirm Deletion' 
-        showActionBtn actionBtnText='Delete' actionBtnClassName='bg-red-600 hover:bg-red-700'
+        showActionBtn actionBtnText='Delete' actionBtnClassName="bg-red-600 hover:bg-red-700"
         onActionClick={handleDeleteResume}>
           <div className=' p-4 '>
-            <div className='flex flex-col item-center text-center'>
+            <div className='flex flex-col items-center text-center'>
               <div className={styles.deleteIconWrapper}>
                 <LucideTrash2 className='text-orange-600' size={24}/>
               </div>

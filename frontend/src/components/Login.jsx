@@ -52,7 +52,7 @@ const Login = ({setCurrentPage}) => {
       {/*Form*/}
 
       <form onSubmit={handleLogin} className={styles.form}>
-         <Input value={email} onChange={({target})=>setEmail(target.value)} label='Email' placeholder='varunhs@gmail.com' type='email'/>
+         <Input value={email} onChange={({target})=>setEmail(target.value)} label='Email' placeholder='example@gmail.com' type='email'/>
 
       <Input value={password} onChange={({target})=>setPassword(target.value)} label='Password' placeholder='Min 8 characters' type='password'/>
 

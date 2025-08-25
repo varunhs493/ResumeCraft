@@ -33,6 +33,7 @@ const UserProvider = ({ children }) => {
     fetchUser();
 
   },[]);
+  
   const updateUser = (userData) => {
     setUser(userData);
     localStorage.setItem('token', userData.token);

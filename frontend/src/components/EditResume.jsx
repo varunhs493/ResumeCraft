@@ -30,6 +30,8 @@ import ThemeSelector from './ThemeSelector'
 import { dataURLtoFile } from '../utils/helper'
 import axios from 'axios'
 //resize observer hook
+
+
 const useResizeObserver=()=>{
   const [size,setSize]=useState({width:0, height:0});
   const ref=useCallback((node)=>{
@@ -536,7 +538,7 @@ const EditResume = () => {
       document.body.removeChild(fixedThumbnail)
 
       //stores image as resume
-      const thumbnailDataUrl = thumbnailCanvas.toDataURL("image/png")
+      const thumbnailDataUrl = thumbnailCanvas.toDataURL("image/png",0.7)
       const thumbnailFile = dataURLtoFile(
         thumbnailDataUrl,
         `thumbnail-${resumeId}.png`
@@ -549,8 +551,7 @@ const EditResume = () => {
         API_PATHS.RESUME.UPLOAD_IMAGES(resumeId),
         formData,
         {
-          //headers: { "Content-Type": "multipart/form-data" },
-          timeout:6000,
+          headers: { "Content-Type": "multipart/form-data" },
         }
       )
 
@@ -740,16 +741,16 @@ const EditResume = () => {
             </div>
           </div>
 
-          <div className=' hidden lg:block'>
+          <div className=" hidden lg:block">
             <div className={containerStyles.previewContainer}>
-              <div className='text-center mb-4'>
+              <div className="text-center mb-4">
                 <div className={statusStyles.completionBadge}>
                   <div className={iconStyles.pulseDot}></div>
                   <span>Preview - {completionPercentage}% Complete</span>
                 </div>
               </div>
 
-              <div className=' preview-container relative' ref={previewContainerRef}>
+              <div className=" preview-container relative" ref={previewContainerRef}>
                 <div className={containerStyles.previewInner}>
                   <RenderResume key={`preview-${resumeData?.template?.theme}`}
                   templateId={resumeData?.template?.theme || ""}
@@ -778,18 +779,18 @@ const EditResume = () => {
         actionBtnText={isDownloading?"Downloaded!":"Download PDF"}
         actionBtnIcon={
           isDownloading?(
-            <Loader2 size={16} className=' animate-spin'/>
+            <Loader2 size={16} className=" animate-spin"/>
           ):
             downloadSuccess?(
-              <Check size={16} className=' text-white'/>
+              <Check size={16} className=" text-white"/>
             ):(
               <Download size={16} />
             )
           
         }
         onActionClick={downloadPDF}>
-          <div className='relative'>
-            <div className=' text-center mb-4'>
+          <div className="relative">
+            <div className=" text-center mb-4">
               <div className={statusStyles.modalBadge}>
                 <div className={iconStyles.pulseDot}></div>
                 <span>Completion : {completionPercentage}%</span>
@@ -797,8 +798,8 @@ const EditResume = () => {
             </div>
 
             <div className={containerStyles.pdfPreview}>
-              <div ref={resumeDownloadRef} className='a4-wrapper'>
-                <div className=' w-full h-full'>
+              <div ref={resumeDownloadRef} className="a4-wrapper">
+                <div className=" w-full h-full">
                   <RenderResume key={`pdf-${resumeData?.template.theme}`} templateId={resumeData?.template?.theme || ""}
                   resumeData={resumeData}
                   containerWidth={null}
